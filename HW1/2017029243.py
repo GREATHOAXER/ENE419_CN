@@ -38,6 +38,7 @@ def test():
     previousPrice = coinPriceInfo[1]
 
 def start(update, context):
+    global previousPrice
     context.bot.send_message(chat_id=update.effective_chat.id, text="작업을 시작합니다.")
     sched.add_job(test,'cron',second = "00",id="test")
     previousPrice = 0
