@@ -1,0 +1,64 @@
+{\rtf1\ansi\ansicpg949\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw9980\paperh14180\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 #include <SPI.h>\
+#include <MFRC522.h>\
+\
+//
+\f1 \'c0\'fc\'bf\'aa\'ba\'af\'bc\'f6
+\f0 \
+int count = 0;\
+\
+//arduino 
+\f1 \'bc\'b3\'c1\'a4
+\f0 \
+int blue = 2;\
+int green = 3;\
+int red = 4;\
+int RST_PIN = 9;\
+int SS_PIN = 10;\
+\
+MFRC522 mfrc(SS_PIN,RST_PIN);\
+\
+void setup()\{\
+  Serial.begin(9600);\
+  SPI.begin();\
+  mfrc.PCD_Init();\
+\}\
+\
+void loop()\{\
+  //
+\f1 \'c0\'ce\'bd\'c4
+\f0  
+\f1 \'b8\'f8\'c7\'cf\'b8\'e9
+\f0  
+\f1 \'b0\'e8\'bc\'d3
+\f0  return 
+\f1 \'b4\'e7\'c7\'cf\'b1\'e2
+\f0 \
+  if(!mfrc.PICC_IsNewCardPresent() || !mfrc.PICC_ReadCardSerial())\{\
+    delay(500);\
+    return;\
+  \}\
+  count = count + 1;\
+  if(count%3 == 0)\{\
+    analogWrite(blue,0);\
+    analogWrite(green,0);\
+    analogWrite(red,255);\
+  \}\
+  else if(count%3 == 1)\{\
+    analogWrite(blue,0);\
+    analogWrite(red,0);\
+    analogWrite(green,255);\
+  \}\
+  else if(count%3 == 2)\{\
+    analogWrite(green,0);\
+    analogWrite(red,0);\
+    analogWrite(blue,255);\
+  \}\
+  \
+\}}

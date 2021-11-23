@@ -1,0 +1,2 @@
+ask_price: 71630000.0, bid_price: 71606000.0, ask_size: 0.00294189, bid_size: 0.3732287
+ask_price: 71630000.0, bid_price: 71606000.0, ask_size: 0.00294189, bid_size: 0.3732287
