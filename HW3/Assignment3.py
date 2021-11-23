@@ -24,7 +24,7 @@ async def upbit_client():
         data = json.dumps(request_format)
 
         #send request to Upbit Server
-        await websocket.send(request_format)
+        await websocket.send(data)
         
         while True:
                 #Receive json data from Upbit Server via WebSocket
@@ -48,6 +48,7 @@ async def upbit_client():
                 elif(data['type'] == "trade"):
                     printList = []
                     newData = data
+                    #get trade_price/trade_volume/ask_bid from received data
                     tradeInfo = ["trade_price", "trade_volume", "ask_bid"]
                     for info in tradeInfo:
                         line = str(info+": "+str(newData[info]))
